@@ -4,10 +4,10 @@ const roleUpgrader = require('creep.role.upgrader');
 const roleBuilder = require('creep.role.builder');
 
 module.exports.loop = function() {
+    let room = Game.rooms[Object.keys(Game.rooms)[0]];
     let spawn = Game.spawns[Object.keys(Game.spawns)[0]];
     let creeps = Game.creeps;
     let roomControllerLevel = Game.rooms[Object.keys(Game.rooms)[0]].controller.level;
-    let tower = Game.getObjectById('cca66ff000e3fa1bd4a9c310');
     let creepCounts = {};
     
     for(let name in creeps) {
@@ -26,9 +26,5 @@ module.exports.loop = function() {
 
     if(spawn) {
         roleSpawn.run(spawn, creepCounts)
-    }
-    
-    if(tower) {
-        roleTower.run(tower);
     }
 }
